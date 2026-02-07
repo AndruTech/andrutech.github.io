@@ -113,34 +113,31 @@ document.querySelectorAll(".project-gallery img").forEach((img) => {
 // ==========================================
 // Descomenta esta sección si quieres un efecto de escritura en tu subtítulo
 
-/*
-const subtitleElement = document.querySelector('.hero-subtitle');
+const subtitleElement = document.querySelector(".hero-subtitle");
 if (subtitleElement) {
-    const originalText = subtitleElement.textContent;
-    subtitleElement.textContent = '';
-    let i = 0;
-    
-    function typeWriter() {
-        if (i < originalText.length) {
-            subtitleElement.textContent += originalText.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100);
-        }
+  const originalText = subtitleElement.textContent;
+  subtitleElement.textContent = "";
+  let i = 0;
+
+  function typeWriter() {
+    if (i < originalText.length) {
+      subtitleElement.textContent += originalText.charAt(i);
+      i++;
+      setTimeout(typeWriter, 100);
     }
-    
-    // Iniciar el efecto después de un pequeño delay
-    setTimeout(typeWriter, 500);
+  }
+
+  // Iniciar el efecto después de un pequeño delay
+  setTimeout(typeWriter, 500);
 }
-*/
 
 // ==========================================
-// CONTADOR DE SCROLL PARA PROGRESS BAR (Opcional)
+// CONTADOR DE SCROLL PARA PROGRESS BAR
 // ==========================================
-// Puedes agregar una barra de progreso en la parte superior
+// Agregar una barra de progreso en la parte superior
 
-/*
 // Crear elemento de progreso
-const progressBar = document.createElement('div');
+const progressBar = document.createElement("div");
 progressBar.style.cssText = `
     position: fixed;
     top: 0;
@@ -153,61 +150,13 @@ progressBar.style.cssText = `
 `;
 document.body.appendChild(progressBar);
 
-window.addEventListener('scroll', () => {
-    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (window.pageYOffset / windowHeight) * 100;
-    progressBar.style.width = scrolled + '%';
+window.addEventListener("scroll", () => {
+  const windowHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  const scrolled = (window.pageYOffset / windowHeight) * 100;
+  progressBar.style.width = scrolled + "%";
 });
-*/
-
-// ==========================================
-// ANIMACIÓN DE NÚMEROS CONTADOR (Para estadísticas)
-// ==========================================
-// Si agregas una sección de estadísticas, puedes usar esto
-
-function animateCounter(element, target, duration = 2000) {
-  let start = 0;
-  const increment = target / (duration / 16);
-
-  const timer = setInterval(() => {
-    start += increment;
-    if (start >= target) {
-      element.textContent = target;
-      clearInterval(timer);
-    } else {
-      element.textContent = Math.floor(start);
-    }
-  }, 16);
-}
-
-// Ejemplo de uso:
-// const counters = document.querySelectorAll('.counter');
-// counters.forEach(counter => {
-//     const target = parseInt(counter.dataset.target);
-//     animateCounter(counter, target);
-// });
-
-// ==========================================
-// LAZY LOADING DE IMÁGENES
-// ==========================================
-const imageObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const img = entry.target;
-      if (img.dataset.src) {
-        img.src = img.dataset.src;
-        img.removeAttribute("data-src");
-      }
-      imageObserver.unobserve(img);
-    }
-  });
-});
-
-// Para usar lazy loading, cambia src por data-src en tus imágenes HTML
-// y luego descomenta esto:
-// document.querySelectorAll('img[data-src]').forEach(img => {
-//     imageObserver.observe(img);
-// });
 
 // ==========================================
 // COPIAR EMAIL AL HACER CLICK
@@ -215,57 +164,16 @@ const imageObserver = new IntersectionObserver((entries) => {
 const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
 emailLinks.forEach((link) => {
   link.addEventListener("click", function (e) {
-    // Opcional: Agregar funcionalidad para copiar el email
     const email = this.href.replace("mailto:", "");
-
-    // Puedes agregar un tooltip que diga "Email copiado"
-    // cuando el usuario haga click
   });
 });
 
 // ==========================================
-// VALIDACIÓN DE FORMULARIO DE CONTACTO
-// (Si decides agregar un formulario más adelante)
+// CURSOR PERSONALIZADO
 // ==========================================
-/*
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const name = this.querySelector('#name').value;
-        const email = this.querySelector('#email').value;
-        const message = this.querySelector('#message').value;
-        
-        // Validación básica
-        if (!name || !email || !message) {
-            alert('Por favor completa todos los campos');
-            return;
-        }
-        
-        // Email regex
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Por favor ingresa un email válido');
-            return;
-        }
-        
-        // Aquí puedes agregar la lógica para enviar el formulario
-        console.log('Formulario enviado:', { name, email, message });
-        
-        // Mostrar mensaje de éxito
-        alert('¡Mensaje enviado exitosamente!');
-        this.reset();
-    });
-}
-*/
 
-// ==========================================
-// CURSOR PERSONALIZADO (Opcional - Avanzado)
-// ==========================================
-/*
-const cursor = document.createElement('div');
-cursor.className = 'custom-cursor';
+const cursor = document.createElement("div");
+cursor.className = "custom-cursor";
 cursor.style.cssText = `
     width: 20px;
     height: 20px;
@@ -278,39 +186,16 @@ cursor.style.cssText = `
 `;
 document.body.appendChild(cursor);
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX - 10 + 'px';
-    cursor.style.top = e.clientY - 10 + 'px';
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX - 10 + "px";
+  cursor.style.top = e.clientY - 10 + "px";
 });
 
-document.querySelectorAll('a, button').forEach(element => {
-    element.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(1.5)';
-    });
-    element.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-    });
+document.querySelectorAll("a, button").forEach((element) => {
+  element.addEventListener("mouseenter", () => {
+    cursor.style.transform = "scale(1.5)";
+  });
+  element.addEventListener("mouseleave", () => {
+    cursor.style.transform = "scale(1)";
+  });
 });
-*/
-
-// ==========================================
-// TEMA OSCURO/CLARO (Para implementación futura)
-// ==========================================
-/*
-const themeToggle = document.getElementById('theme-toggle');
-const currentTheme = localStorage.getItem('theme') || 'light';
-
-document.documentElement.setAttribute('data-theme', currentTheme);
-
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const theme = document.documentElement.getAttribute('data-theme');
-        const newTheme = theme === 'light' ? 'dark' : 'light';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    });
-}
-*/
-
-console.log("🚀 Portafolio cargado exitosamente");
